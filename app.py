@@ -50,35 +50,6 @@ def index():
     return render_template('home.html')
 
 
-# Example page
-@app.route('/example')
-def example():
-
-    # Example of API call to get deals
-    base_url = "https://api-test.lime-crm.com/api-test/api/v1/limeobject/company/35362/deal/"
-    params = "?"
-    url = base_url + params
-    response_deals = get_api_data(headers=headers, url=url)
-    
-    
-    for i in range(len(response_deals)-1):
-        if response_deals[i]['dealstatus'] != 'agreement':
-            response_deals.pop(i)
-
-    """
-    [YOUR CODE HERE]
-    In this exmaple, this is where you can do something with the data in
-    'response_deals' before you return it below.
-    """
-
-    if len(response_deals) > 0:
-        return render_template('example.html', deals=response_deals)
-    else:
-        msg = 'No deals found'
-        return render_template('example.html', msg=msg)
-
-
-
 @app.route('/averagedeals')
 def averagedeals():
     #Won deals last year (2021)
@@ -100,7 +71,6 @@ def averagedeals():
         date = deals['closeddate']
 
 
-        #Detta för snyggare datum
         yourdate = parser.parse(date)
         newdate = datetime.strftime(yourdate, '%y/%m/%d')
 
@@ -109,7 +79,6 @@ def averagedeals():
         value.append(deals['value'])
             
         #Jag försökte något såhär men fick ej att fungera:
-
         #yourdate = parser.parse(date)
         #newdate = datetime.strftime(yourdate, '%y/%m/%d')
         #date['closeddate'] = json.loads(newdate)
@@ -230,28 +199,6 @@ def statusofcompanies():
     numofcompanies = len(companies)
 
     return render_template('statusofcompanies.html', companies=companies, status=status, numofcompanies=numofcompanies)
-
-    customers = []
-    valueofdeals = []
-    numofdeals = []
-
-    for deals in response_deals:
-
-        customer = deals['name']
-        value = deals['value']
-        print(value)
-        
-        if customer in customers:
-            valueofdeals[customers.index(customer)] += deals['value']
-            numofdeals[customers.index(customer)] += 1
-
-        else:
-            customers.append(customer)
-            valueofdeals.append(value)
-            numofdeals.append(1)
-
-
-    lenght = len(customers) 
 
 # DEBUGGING
 """
