@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Status of Companies</h1>
+
+<table class="table">
+    <thread>
+        <tr>
+            <th scope="col">Companies</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thread>
+    <tbody>
+
+        {% for i in range(numofcompanies)%}
+
+        <tr>
+            <th scope="row">{{ companies[i] }}</th>
+            <td>{{ status[i] }}</td>
+
+        </tr>
+
+        {% endfor %}
+    </tbody>
+
+</table>
+
+
+
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" style="height: 200px;"
+            src="{{ url_for('static', filename='Dreamteam.jpg') }}">
+        <h2>This is Dream Team!</h2>
+        <p>We are working for a better life on a daily basis!</p>
+
+    </div>
+</div>
+
+{% endblock %}

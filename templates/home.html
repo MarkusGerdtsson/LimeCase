@@ -1,8 +1,66 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-	<div class="jumbotron text-center">
-		<h1>Dream team</h1>
-		<p class="lead">Let's get some data out of Lime, do some calculations and show the result on this website!</p>
+
+<div class="container" style="padding-top: 40px">
+
+	<div class="row">
+		<div class="col-sm py-5 text-center border border-dark rounded-circle" style="padding: 10px; cursor: pointer;"
+			onclick="location.href='/dealspermonth'">
+			<img class="image" id="cal" src="{{ url_for('static', filename='Calendarnew.png') }}">
+			<h3>Deals per month</h3>
+		</div>
+		<div class="col-sm py-5 text-center border border-dark rounded-circle" style="padding: 10px; cursor: pointer;"
+			onclick="location.href='/dealspercustomer'">
+			<img class="image" src="{{ url_for('static', filename='Dealspercustomer.png') }}">
+			<h3>Deals per Customer</h3>
+		</div>
 	</div>
+	<div class="row">
+		<div class="col-sm py-5 text-center border border-dark rounded-circle" style="padding: 10px; cursor: pointer;"
+			onclick="location.href='/averagedeals'">
+			<img class="image" id="Money" src="{{ url_for('static', filename='Money.png') }}">
+			<h3>Average Deals</h3>
+		</div>
+		<div class="col-sm py-5 text-center border border-dark rounded-circle" style="padding: 10px; cursor: pointer;"
+			onclick="location.href='/statusofcompanies'">
+			<img class="image" src="{{ url_for('static', filename='man.png') }}">
+			<h3>Status of Copmpanies</h3>
+		</div>
+
+	</div>
+
+</div>
+
+<div class="container">
+	<div class="py-5 text-center">
+		<img class="d-block mx-auto mb-4" style="height: 200px;" id="Dreamteam"
+			src="{{ url_for('static', filename='Dreamteam.jpg') }}">
+		<h2>This is Dream Team!</h2>
+		<p>We are working for a better life on a daily basis!</p>
+
+	</div>
+</div>
+
+<script>
+
+</script>
+
+<style>
+	.image {
+		width: 200px;
+		/* You can set the dimensions to whatever you want */
+		height: 184px;
+		object-fit: cover;
+		border: 30px;
+	}
+
+	.border {
+		border: 3px solid #000000 !important;
+		margin: 20px;
+	}
+</style>
+
+
+
 {% endblock %}

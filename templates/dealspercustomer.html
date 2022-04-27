@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Deals per Customer last year (2021)</h1>
+<br>
+
+<table class="table">
+    <thread>
+        <tr>
+            <th scope="col">Customer</th>
+            <th scope="col">Deals</th>
+            <th scope="col">Total Value</th>
+        </tr>
+    </thread>
+    <tbody>
+
+        {% for i in range(lenght) %}
+
+
+        <tr>
+            <th scope="row">{{ customers[i] }}</th>
+            <td>{{ numofdeals[i] }}</td>
+            <td>{{ valueofdeals[i] }}kr</td>
+
+
+        </tr>
+
+        {% endfor %}
+    </tbody>
+
+</table>
+
+
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" style="height: 200px;"
+            src="{{ url_for('static', filename='Dreamteam.jpg') }}">
+        <h2>This is Dream Team!</h2>
+        <p>We are working for a better life on a daily basis!</p>
+
+    </div>
+</div>
+
+<br>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Deals per month and total value</h1>
+
+
+<table class="table">
+    <thread>
+        <tr>
+            <th scope="col">Month</th>
+            <th scope="col">Deals</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thread>
+    <tbody>
+
+        {% for i in range(12)%}
+
+
+        <tr>
+            <th scope="row">{{ months[i] }}</th>
+            <td>{{ numofdeals[i] }}</td>
+            <td>{{ valuelist[i] }}kr</td>
+
+
+        </tr>
+
+        {% endfor %}
+    </tbody>
+
+</table>
+
+
+<div class="container">
+    <canvas id="myChart"></canvas>
+
+</div>
+
+
+
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" style="height: 200px;"
+            src="{{ url_for('static', filename='Dreamteam.jpg') }}">
+        <h2>This is Dream Team!</h2>
+        <p>We are working for a better life on a daily basis!</p>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+    const labels = months;
+
+    var value = ['{{ valuelist[0] }}', '{{ valuelist[1] }}', '{{ valuelist[2] }}', '{{ valuelist[3] }}', '{{ valuelist[4] }}', '{{ valuelist[5] }}', '{{ valuelist[6] }}', '{{ valuelist[7] }}', '{{ valuelist[8] }}', '{{ valuelist[9] }}', '{{ valuelist[10] }}', '{{ valuelist[11] }}'];
+
+
+
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Value of deals',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: value,
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
+
+
+
+{% endblock %}
